@@ -26,8 +26,16 @@ function filterActiveUsers(users) {
  * @returns {string} - The log message.
  */
 function logAction(action, username) {
-    const timestamp = new Date().toISOString();
-    return `User ${username} performed ${action} at ${timestamp}`;
+    if(action === undefined || username === undefined){
+        return 'Error: Please ensure both an action and a username are provided';
+    }
+    else if(action === '' || username === ''){
+        return 'Error: Neither action nor username can remain blank';
+    }
+    else {
+        const timestamp = new Date().toISOString();
+        return `User ${username} performed ${action} at ${timestamp}`;
+    }
 }
 
 module.exports = { capitalizeWords, filterActiveUsers, logAction };
